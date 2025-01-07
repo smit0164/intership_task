@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Form</title>
+</head>
+<body>
+    <header>
+        <h1>Quiz Form</h1>
+    </header>
+    <form>
+        
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <ol>
+            
+            <li>
+                <p>Choose your favorite language:</p>
+                <input type="radio" id="hindi" name="language" value="Hindi">
+                <label for="hindi">Hindi</label><br>
+                <input type="radio" id="gujarati" name="language" value="Gujarati">
+                <label for="gujarati">Gujarati</label><br>
+                <input type="radio" id="english" name="language" value="English">
+                <label for="english">English</label><br>
+            </li>
+            <br>
+
+        
+            <li>
+                <p>What does the `git init` command do?</p>
+                <input type="radio" id="q2-1" name="git-init" value="Initializes a new branch">
+                <label for="q2-1">Initializes a new branch</label><br>
+                <input type="radio" id="q2-2" name="git-init" value="Initializes a new Git repository">
+                <label for="q2-2">Initializes a new Git repository</label><br>
+                <input type="radio" id="q2-3" name="git-init" value="Updates the remote URL">
+                <label for="q2-3">Updates the remote URL</label><br>
+                <input type="radio" id="q2-4" name="git-init" value="Deletes the repository">
+                <label for="q2-4">Deletes the repository</label><br>
+            </li>
+            <br>
+
+            
+            <li>
+                <p>Which command is used to check the status of your Git repository?</p>
+                <input type="radio" id="q3-1" name="git-status" value="git check">
+                <label for="q3-1">git check</label><br>
+                <input type="radio" id="q3-2" name="git-status" value="git status">
+                <label for="q3-2">git status</label><br>
+                <input type="radio" id="q3-3" name="git-status" value="git log">
+                <label for="q3-3">git log</label><br>
+                <input type="radio" id="q3-4" name="git-status" value="git branch">
+                <label for="q3-4">git branch</label><br>
+            </li>
+            <br>
+
+            
+            <li>
+                <p>Which tag is used for creating a hyperlink?</p>
+                <input type="radio" id="q4-1" name="html-tag" value="&lt;a&gt;">
+                <label for="q4-1">&lt;a&gt;</label><br>
+                <input type="radio" id="q4-2" name="html-tag" value="&lt;link&gt;">
+                <label for="q4-2">&lt;link&gt;</label><br>
+                <input type="radio" id="q4-3" name="html-tag" value="&lt;href&gt;">
+                <label for="q4-3">&lt;href&gt;</label><br>
+                <input type="radio" id="q4-4" name="html-tag" value="&lt;url&gt;">
+                <label for="q4-4">&lt;url&gt;</label><br>
+            </li>
+            <br>
+
+            
+            <li>
+                <p>Write a query to select all columns from a table named `employees`:</p>
+                <textarea id="sql-query" name="sql-query" rows="4" cols="50" placeholder="Write your SQL query here..."></textarea>
+            </li>
+            <br>
+        </ol>
+
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
