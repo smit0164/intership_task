@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is my journey">
+    <meta name="keywords" content="Smit Patel, Frontend Developer, Portfolio">
+    <title>Smit Patel - Portfolio</title>
+</head>
+<body>
+
+   
+    <nav style="font-size: xx-large;">
+        <a href="">Home</a>
+        <a href="#intro">About</a>
+        <a href="#Projects">Projects</a>
+        <a href="#Contact">Contact</a>
+        <a href="#Resume">Resume</a>
+    </nav>
+
+    
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <h1>Hi, I'm Smit Patel</h1>
+                    <p style="font-size: x-large;">I’m a Frontend Developer passionate about crafting beautiful, functional, and user-centric experiences. Let's create something amazing together!</p>
+                </td>
+                <td>
+                    <img src="home_page_img.jpg" alt="Frontend Developer Image" width="500">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    
+    <div>
+        <a href="#download" 
+        download="Smit-Patel-resume.pdf"
+        style="background-color: blue;text-decoration: none;color: floralwhite;border-radius: 5%; padding: 5px;font-weight: 200;">Download My Resume</a>
+        <a href="#Projects" style="background-color: blue;text-decoration: none;color: floralwhite;border-radius: 5%; padding: 5px;">My Work</a>
+        <a href="#Contact" style="background-color: blue;text-decoration: none;color: floralwhite;border-radius: 5%; padding: 5px;">Get In Touch</a>
+    </div>
+    <hr>
+
+    <section id="intro">
+        <h1 style="font-size: xx-large;background-color: rgb(77, 77, 161);color: floralwhite;border-radius: 5%; padding: 5px;">About Me:</h1>
+        <table>
+            <tr>
+                <td>
+                    <h2>Introduction:</h2>
+                    <p style="font-size: x-large;">Hi, I’m Smit Patel, a passionate Frontend Developer with a knack for creating visually stunning and user-friendly web applications. I love turning ideas into reality with clean code and innovative designs.</p>
+                    <h2>My Journey:</h2>
+                    <p style="font-size: x-large;">I am from Zalod. I completed my education in my hometown Zalod, then I took admission in CHARUSAT University for engineering. Currently, I am doing an internship at ArsenalTech. I am skilled in DSA and Backend technologies.</p>
+                    <h2>Skills:</h2>
+                    <ul style="font-size: x-large;">
+                        <li>DSA</li>
+                        <li>JavaScript, React.js</li>
+                        <li>OOP, DBMS</li>
+                    </ul>
+                    <h2>Fun Facts:</h2>
+                    <ul style="font-size: x-large;">
+                        <li>When I’m not coding, you can find me hiking or exploring new cuisines.</li>
+                        <li>I’m a huge fan of sci-fi movies and love to tinker with new gadgets.</li>
+                    </ul>
+                </td>
+                <td>
+                    <img src="21it122.jpg" alt="My Photo" height="500">
+                </td>
+            </tr>
+        </table>
+    </section>
+    <hr>
+   
+    <section id="Projects">
+        <h1 style="font-size: xx-large;font-size: xx-large;background-color: rgb(77, 77, 161);color: floralwhite;border-radius: 5%; padding: 5px;">Projects:</h1>
+        <h2>1. Unused Medicines Donation For NGOs</h2>
+        <p style="font-size: x-large;">
+            I created a platform where users can donate their unused medicines to help poor people. 
+            I used React.js for the frontend and Node.js for the backend. The website focuses on being user-friendly.
+        </p>
+        <h2>2. Todo App</h2>
+        <p style="font-size: x-large;">
+            I built a website to manage my weekly schedule and daily tasks. Through this project, I learned how CRUD operations work in React.js. 
+            This project was built entirely using React.js.
+        </p>
+        <h2>3. Weather App</h2>
+        <p style="font-size: x-large;">
+            I developed a website to display the weather of various cities. I used a third-party API called OpenWeather to fetch the data.
+        </p>
+    </section>
+    <hr>
+    
+    <section id="Resume">
+        <h1 style="font-size: xx-large;font-size: xx-large;background-color: rgb(77, 77, 161);color: floralwhite;border-radius: 5%; padding: 5px;">Resume</h1>
+        <p style="font-size: x-large;">You can download my resume or view it here:</p>
+        <p style="font-size: x-large;"><a href="Smit-Patel-resume.pdf" target="_blank" download="Smit-Patel-resume.pdf" id="download">Download My Resume (PDF)</a></p>
+        <p style="font-size: x-large;">Or check out my resume below:</p>
+        <iframe src="Smit-Patel-resume.pdf" width="100%" height="600px" title="Smit Patel - Resume"></iframe>
+    </section>
+    <hr>
+    <section id="Contact">
+        <h1 style="font-size: xx-large;font-size: xx-large;background-color: rgb(77, 77, 161);color: floralwhite;border-radius: 5%; padding: 5px;">Contact</h1>
+        <form>
+            <fieldset style="font-size: x-large;border-color: black ;">
+                <legend>Personal information</legend>
+                <div>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" style="height: 20px;border-color: black;font-weight: bolder;" required>
+                </div>
+                <div>
+                <label for="Mobile">Mobile number:</label>
+                <input type="tel" id="Mobile" placeholder="Enter your number" style="height: 20px;border-color: black;font-weight: bolder;font-size: small;" required>
+               </div>
+               <div>
+                <label for="email">Email:</label>
+                <input type="tel" id="email" placeholder="Enter your email" style="height: 20px;border-color: black;font-weight: bolder;" required>
+               </div>
+            </fieldset>
+            <fieldset style="font-size: x-large;border-color: black ;">
+                <legend>Message Details</legend>
+            
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." style="height: 20px;border-color: black;font-weight: bolder;" required></textarea>
+                </div>
+              </fieldset>
+              <br>
+            <input type="submit" value="submit" style="height: 50px;width: 100px;font-size: large;font-weight: bolder;">
+        </form>
+        <p> <h1>social media links:</h1></p>
+        <table cellpadding="10">
+            
+            <tr>
+
+            <td>
+               
+                <a href="https://www.linkedin.com/in/smit-patel122/" target="_blank">
+                    <img src="image.png" alt="linkdin">
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="https://www.instagram.com/smit0164/" target="_blank">
+                    <img src="instagram.png" alt="instagram" height="40">
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                <img src="phone.png" id="phonenumber" height="40" alt="phonenumber">
+            </td>
+          </tr>
+        </table>
+       
+    </section>
+
+</body>
+</html>
