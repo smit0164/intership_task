@@ -60,7 +60,7 @@
                 <img src="21it122.jpg" alt="My Photo" height="300" width="300">
             </div>
             <div class="textab" >
-                <h3>About Me</h3>
+                <h1><span style="color: white;font-size: 2.5rem;">About</span>  <span style="color: #00bcd4; font-size:2.5rem;">Me</span></h1>
                 <p>
                     Hi, I’m <strong>Smit Patel</strong>, a passionate Frontend Developer with a knack for creating visually appealing and user-centric web applications. 
                     With strong expertise in JavaScript, React.js, and web design principles, I aim to craft seamless user experiences. 
@@ -85,27 +85,25 @@
     <hr>
 
     <section id="Projects">
-        <h3 style="font-size:2rem;color: #00bcd4" >My Project</h3>
+        <h1 style="text-align: center;"><span style="color: white;font-size: 2.5rem;">My</span>  <span style="color: #00bcd4; font-size:2.5rem;">Projects</span></h1>
         <div class="Project">
-            
+          
            <div class="flip-card">
              <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <img src="medicine.webp" alt="medicines project" style="width:300px;height:300px;border-radius: 20%;">
                 </div>
 
-                <div class="flip-card-back">
-                    <div>
-                        <img src="bg_image.jpg" alt="background image" class="bg" style="width:300px;height:300px;border-radius: 20%;opacity: 0.5;
-                    z-index: -1;">
-                    </div>
-                    <div>
-                        <p>unused medicine donation</p>
-                    </div>
-                     
+                <div class="flip-card-back" >
+                          <h3 >Unused medicine Donation</h3>
+                          
+                            <p>I created a platform where you can donate 
+                                your medicines to poor people 
+                            </p>
+                            <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
+                    
                 </div>
-                
-             </div>
+            </div>
            
            </div>
 
@@ -116,13 +114,16 @@
                </div>
 
                <div class="flip-card-back">
-                    <h1>description:</h1>
-                    <p>efrgrgrgrgrgrg</p>
-               </div>
+                       <h2>Todo App</h2>
+                        <p>I create a Todo App to learn CRUD opration
+                        </p>
+                        <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
+                </div>
                
             </div>
+            </div>
           
-          </div>
+        
 
 
           <div class="flip-card">
@@ -132,64 +133,86 @@
                </div>
 
                <div class="flip-card-back">
-                    <h1>description:</h1>
-                    <p>efrgrgrgrgrgrg</p>
-               </div>
+                        <h2>Weather App</h2>
+                        <p>I created a Weather App to Learn  How third party Api used in our project.
+                        </p>
+                        <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
+                </div>
                
             </div>
-          
-          </div>
+           </div>
 
-        </div>
+        
         
     </section>
+<hr>
+<!--My skill section-->
+<section id="skill">
+    <div>
+    <h1><span style="color: white;font-size: 2.5rem;text-align: center;">My</span>  <span style="color: #00bcd4; font-size:2.5rem;">Skill</span></h1>
+    </div>
+     <div class="containernew">
+          <div class="card">
+               SQL
+          </div>
+          <div class="card">
+            C++
+          </div>
 
-    <hr>
+        <div class="card">
+            DSA
+        </div>
 
-    <section id="Resume">
-        <h1>Resume</h1>
-        <p>You can download my resume or view it here:</p>
-        <p><a href="Smit-Patel-resume.pdf" target="_blank" download="Smit-Patel-resume.pdf">Download My Resume (PDF)</a></p>
-        <p>Or check out my resume below:</p>
-        <iframe src="Smit-Patel-resume.pdf" class="resume-iframe" title="Smit Patel - Resume"></iframe>
-    </section>
+       <div class="card">
+        Problem solving
+       </div>
 
-    <hr>
+       <div class="card" id="tw">
+        Team-work
+       </div>
 
+       <div class="card" id="db">
+          DBMS
+       </div>
+
+          
+     </div>
+</section>
+   
+ <hr>
     <section id="Contact">
-        <h1>Contact</h1>
-        <form>
-            <fieldset>
-                <legend>Personal information</legend>
-                <div>
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
+        <h1><span style="color: white;font-size: 2.5rem;">Contact</span>  <span style="color: #00bcd4; font-size:2.5rem;">Me</span></h1>
+        <div class="form">
+            <form action="">
+                <div class="row">
+                    <div class="col2">
+                        <input type="text" id="fname" placeholder="Enter your first name" name="firstname" required>
+                    </div>
+                    <div class="col2">
+                        <input type="text" id="lname" placeholder="Enter your last name" name="lastname" required>
+                    </div>
                 </div>
-                <div>
-                    <label for="Mobile">Mobile number:</label>
-                    <input type="tel" id="Mobile" placeholder="Enter your number" required>
+    
+                <div class="row">
+                    <div class="col2">
+                        <input type="tel" id="Mobile" placeholder="Enter your number" required>
+                    </div>
+                    <div class="col2">
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
                 </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Message Details</legend>
-                <div class="form-group">
-                    <label for="message">Your Message:</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
-                </div>
-            </fieldset>
-            <input type="submit" value="Submit">
-        </form>
+                    <div class="row" >
+                        <textarea id="message" name="message" rows="10" class="textarea" placeholder="Write your message here..."></textarea>
 
-        <div class="social-media-links">
-            <a href="https://www.linkedin.com/in/smit-patel122/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/smit0164/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+                    </div>
+                
+    
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
         </div>
     </section>
-
+    
 </body>
 </html>
