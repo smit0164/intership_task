@@ -6,213 +6,232 @@
     <meta name="description" content="This is my journey">
     <meta name="keywords" content="Smit Patel, Frontend Developer, Portfolio">
     <title>Smit Patel - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
-   
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+   <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+<!--Navbar-->
+<div class="conaitner">
+    <nav id="navbar">
+        <div class="nav-logo">
+            <p class="nav-text">Smit</p>
+            <span>.</span>
+        </div>
+        <div class="nav-menu" id="mynav">
+            <ul class="nav-menu-list">
+                <li class="nav-list">
+                    <a href="#Home" class="nav-link">Home</a>
+                    <div class="circle"></div>
+                </li>
 
-    <nav>
-        <div><p>Portfolio</p></div>
-        <div>
-            <a href="">Home</a>
-            <a href="#intro">About</a>
-            <a href="#Projects">Projects</a>
-            <a href="#Contact">Contact</a>
-            <a href="#Resume">Resume</a>
+                <li class="nav-list">
+                    <a href="#Home" class="nav-link">About</a>
+                    <div class="circle"></div>
+                </li>
+
+                <li class="nav-list">
+                    <a href="#Home" class="nav-link">Project</a>
+                    <div class="circle"></div>
+                </li>
+
+                <li class="nav-list">
+                    <a href="#Home" class="nav-link">Contact</a>
+                    <div class="circle"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn">Download CV <i class="uil uil-file"></i></button>
+
+        </div>
+        <div class="nav-bar">
+            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
         </div>
     </nav>
-
-    <div class="container">
-        <div class="hero-text">
-            <h1>Hello, I'm <span>Smit Patel</span></h1>
-            <p>I’m a Frontend Developer passionate about crafting beautiful, functional, and user-centric experiences. Let's create something amazing together!</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/yourprofile" target="_blank" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="tel:+91 92265601854" title="Phone">
-                    <i class="fas fa-phone"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:smithpatel895@gmail.com" title="Gmail">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <div class="cn">
-                <a href="#Contact" class="cta-button">Contact Me</a>
-            </div>
-        </div>
-
-        <div class="hero-image">
-            <img src="home_page_img.jpg" alt="Frontend Developer Image">
-        </div>
-    </div>
-
-    <hr>
-
-    <section id="intro">
-        <div class="About">
-            <div class="myphoto" >
-                <img src="21it122.jpg" alt="My Photo" height="300" width="300">
-            </div>
-            <div class="textab" >
-                <h1><span style="color: white;font-size: 2.5rem;">About</span>  <span style="color: #00bcd4; font-size:2.5rem;">Me</span></h1>
-                <p>
-                    Hi, I’m <strong>Smit Patel</strong>, a passionate Frontend Developer with a knack for creating visually appealing and user-centric web applications. 
-                    With strong expertise in JavaScript, React.js, and web design principles, I aim to craft seamless user experiences. 
-                </p>
-                <p>
-                    I grew up in Zalod, Gujarat, and pursued my engineering degree at <strong>CHARUSAT University</strong>. 
-                    My current internship at <strong>ArsenalTech</strong> has further enhanced my technical skills and given me exposure to real-world projects.
-                </p>
-                <p>
-                    Outside work, I enjoy hiking, exploring new cuisines, and indulging in sci-fi movies. 
-                    My curiosity for technology drives me to experiment with gadgets and stay ahead in the tech domain.
-                </p>
-                <p>
-                    I’m always on the lookout for exciting collaborations and opportunities to grow. Let’s connect and bring innovative ideas to life!
-                </p>
-                <button class="read-more-btn">Read More</button>
-            </div>
-        </div>
-    </section>
-    
-
-    <hr>
-
-    <section id="Projects">
-        <h1 style="text-align: center;"><span style="color: white;font-size: 2.5rem;">My</span>  <span style="color: #00bcd4; font-size:2.5rem;">Projects</span></h1>
-        <div class="Project">
-          
-           <div class="flip-card">
-             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <img src="medicine.webp" alt="medicines project" style="width:300px;height:300px;border-radius: 20%;">
-                </div>
-
-                <div class="flip-card-back" >
-                          <h3 >Unused medicine Donation</h3>
-                          
-                            <p>I created a platform where you can donate 
-                                your medicines to poor people 
-                            </p>
-                            <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
-                    
-                </div>
-            </div>
-           
-           </div>
-
-           <div class="flip-card">
-            <div class="flip-card-inner">
-               <div class="flip-card-front">
-                   <img src="todo.jpg" alt="medicines project" style="width:300px;height:300px;border-radius: 20%;">
-               </div>
-
-               <div class="flip-card-back">
-                       <h2>Todo App</h2>
-                        <p>I create a Todo App to learn CRUD opration
-                        </p>
-                        <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
-                </div>
-               
-            </div>
-            </div>
-          
-        
-
-
-          <div class="flip-card">
-            <div class="flip-card-inner">
-               <div class="flip-card-front">
-                   <img src="weather.webp" alt="medicines project" style="width:300px;height:300px;border-radius: 20%;">
-               </div>
-
-               <div class="flip-card-back">
-                        <h2>Weather App</h2>
-                        <p>I created a Weather App to Learn  How third party Api used in our project.
-                        </p>
-                        <i class="fa-solid fa-share-from-square"  style="color:white;font-size:3rem"></i>
-                </div>
-               
-            </div>
-           </div>
-
-        
-        
-    </section>
-<hr>
-<!--My skill section-->
-<section id="skill">
-    <div>
-    <h1><span style="color: white;font-size: 2.5rem;text-align: center;">My</span>  <span style="color: #00bcd4; font-size:2.5rem;">Skill</span></h1>
-    </div>
-     <div class="containernew">
-          <div class="card">
-               SQL
-          </div>
-          <div class="card">
-            C++
-          </div>
-
-        <div class="card">
-            DSA
-        </div>
-
-       <div class="card">
-        Problem solving
-       </div>
-
-       <div class="card" id="tw">
-        Team-work
-       </div>
-
-       <div class="card" id="db">
-          DBMS
-       </div>
-
-          
-     </div>
-</section>
+  <!--main-->
+  <main class="wrapper">
    
- <hr>
-    <section id="Contact">
-        <h1><span style="color: white;font-size: 2.5rem;">Contact</span>  <span style="color: #00bcd4; font-size:2.5rem;">Me</span></h1>
-        <div class="form">
-            <form action="">
-                <div class="row">
-                    <div class="col2">
-                        <input type="text" id="fname" placeholder="Enter your first name" name="firstname" required>
-                    </div>
-                    <div class="col2">
-                        <input type="text" id="lname" placeholder="Enter your last name" name="lastname" required>
-                    </div>
+        <section class="featured-box">
+              <div class="featured-text">
+                   
+                   <div class="feautured-name">
+                    <p> I'm <span class="typedText">software developer</span></p>
+                   </div>
+                   <div class="feautred-text-info">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus at harum assumenda saepe quae neque quaerat, deserunt placeat ducimus, 
+                    mollitia molestias quis excepturi soluta sed autem non. Soluta, possimus quas!</p>
+                   </div>
+                   <div class="feautred-text-btn">
+                    <button class="btn blue-btn">Hire Me</button>
+                     <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
+                   </div>
+                   <div class="social-icon">
+                    <div class="icon"><i class="uil uil-instagram"></i></div>
+                    <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
+                    <div class="icon"><i class="uil uil-dribbble"></i></div>
+                    <div class="icon"><i class="uil uil-github-alt"></i></div>
+                   </div>
+              </div>
+              <div class="featured-image">
+                <div class="image">
+                    <img src="21it122.jpg" alt="my image" >
                 </div>
-    
-                <div class="row">
-                    <div class="col2">
-                        <input type="tel" id="Mobile" placeholder="Enter your number" required>
-                    </div>
-                    <div class="col2">
-                        <input type="email" id="email" placeholder="Enter your email" required>
-                    </div>
-                </div>
-                    <div class="row" >
-                        <textarea id="message" name="message" rows="10" class="textarea" placeholder="Write your message here..."></textarea>
+                   
+              </div>
+              <div class="scroll-icon-box">
+                <a href="#about" class="scroll-btn">
+                    <i class="uil uil-mouse-alt"></i>
+                    <p>Scroll Down</p>
+                </a>
+              </div>
+        </section>
 
-                    </div>
-                
-    
-                <div class="row">
-                    <input type="submit" value="Submit">
+        <!--About-->
+        <section  id="about">
+            <div class="header">
+               <h1>About Me</h1>
+            </div>
+            <div class="row">
+               <div class="col1">
+                   <div class="my-info">
+                         <h2>My introduction</h2>
+                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, eos hic quasi quos ab commodi sequi nulla cupiditate, consequuntur repellat debitis? 
+                           Illo iusto nisi amet saepe assumenda dolorum quidem omnis.</p>
+                           <div class="contact-btn">
+                               <button class="btn">Contact Me</button>
+                           </div>
+                   </div>
+               </div>
+               <div class="col2">
+                     <div class="my-skill">
+                        <div>
+                            <h2>My Skill</h2>
+                        </div>
+                        <div class="mynewskill">
+                            <div class="teg">
+                                <button class="t1">HTML</button>
+                                <button class="t1">CSS</button>
+                                <button class="t1">JS</button>
+                            </div>
+                            <div class="teg">
+                                <button class="t2">Node js</button>
+                                <button class="t2">PHP</button>
+                                
+                            </div>
+                            <div class="teg">
+                                <button class="t3">C++</button>
+                                <button class="t3">C</button>
+                                <button class="t3">Java</button>
+                                
+                            </div>
+                        </div>
+                        
+                     </div>
+               </div>
+            </div>
+        </section>
+
+        <!--Project-->
+        <section  id="projects">
+            <div class="header">
+                <h1>Projects</h1>
+            </div>
+         <div class="project-container">
+            <div class="cardpro">
+                <img src="medicine.webp" alt="medicines project" >
+                <h2>Unused medicine Donation</h2>
+                <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;">I created a platform where unused medicines can be donated to NGOs. These NGOs carefully inspect and distribute the medicines to poor people who otherwise cannot afford them. 
+                    The platform bridges the gap between surplus medicines and those in need, reducing waste and promoting health equity. 
+                 </p>
+            </div>
+
+            <div class="cardpro">
+                <img src="todo.jpg" id="cardimg" alt="medicines project" >
+                         <h2>Todo App</h2>
+                         <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;"> Manage your tasks efficiently with our easy-to-use to-do app. Create, organize, and prioritize your daily activities to stay productive. 
+                             Set reminders and deadlines to never miss an important task. Simplify your life and achieve your goals effortlessly!
+                        </p>
+             </div>
+              
+            <div class="cardpro">
+                <img src="weather.webp" id="cardimg" alt="medicines project" >
+                         <h2>Weather App</h2>
+                         <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;">
+                             Stay updated with accurate and real-time weather forecasts for your location. 
+                             Get detailed insights into temperature, humidity, wind speed, and more. 
+                             Plan your day better with alerts for severe weather conditions and weekly forecasts. 
+                             Your go-to platform for all things weather!
+                         </p>
+             </div>
+          </div>
+    </section>
+
+    <!--Contact Me-->
+    <section class="section" id="contact">
+        <div class="contact-container">
+            <h1>Contact Me</h1>
+            <form >
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <!-- Subject Field -->
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
+                </div>
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
     </section>
     
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+             <div class="footer-section">
+               <h3>Contact Me</h3>
+                <div class="email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>smitpatel.ast@gmail.com</span>
+              </div>
+              <div style="color: white;">
+                <i class="fa-solid fa-phone"></i>
+                <span>Phone: +91 9265601854</span>
+              </div>
+              
+             </div>
+             <div class="footer-section">
+                 <h3>Follow Me</h3>
+                 <a href="" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                 </a>
+                 <a href="" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                 </a>
+                 <a>
+                    <i class="fa-brands fa-square-instagram"></i>
+                 </a>
+
+             </div>
+             <div class="footer-section">
+                  <h3>@ 2025 Smit Patel</h3>
+                  <p>All rights reserved.</p>
+             </div>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
