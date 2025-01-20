@@ -15,30 +15,31 @@
     --first-shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
 
 .btn{
-    background: #efefef;
+    background: rgb(100 140 234);
     font-size: 1.1rem;
     border-radius: 10px;
-    padding: 12px 20px;
+    padding: 12px;
     border: none;
     cursor: pointer;
     transition: .4s;
+    color: white;
+
 }
-.btn>i{
-    margin-left: 10px;
-}
+
 .btn:hover{
     background:var(--second-color);
     color:var(--color-white);
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* NAVBAR CSS */
 
 nav{
     display: flex;
@@ -60,9 +61,8 @@ nav{
 .nav-text{
     font-size: 30px;
     font-weight:600;
-    color:rgb(30, 30, 30);
+    color:rgb(255, 254, 254);
 }
-
 
 .nav-logo span{
     position:absolute;
@@ -78,23 +78,32 @@ nav{
   position: relative;
 
 }
-.nav-list a{
-    text-decoration:none;
-    color: rgb(30, 30, 30);
-    font-weight: 500;
-    padding-inline: 15px;
-    margin-inline: 15px;
+
+.nav-list {
+    margin: 0 15px;
+    position: relative;
 }
-.nav-link:hover{
-    color: rgb(40, 91, 212);
-    background-color: rgb(40, 91, 212);
-    border-radius: 5px; 
-    padding-inline: 15px;
-    margin-inline: 15px;
-    height:1.5rem;
+
+.nav-list a {
     color: white;
-    
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
+
+
+.nav-list:hover a {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px; 
+}
+
+
+.nav-list a {
+    transition: background-color 0.3s, padding 0.3s;
+}
+
 .nav-bar{
     display: none;
 }
@@ -144,6 +153,7 @@ nav{
         justify-content: center;
         align-items: flex-start;
         min-height:60vh;
+        
     }
     .social-icon{
         margin-top: 2em;
@@ -153,10 +163,12 @@ nav{
         max-width: 100%;
         width: 150px;
         height: 150px;
+
     }
     .wrapper .img{
         width: 150px;
         height:150px;
+        
     }
     .wrapper .scroll-btn {
         display: none;
@@ -164,6 +176,12 @@ nav{
 
     .wrapper .featured-image{
         justify-content: center;
+        align-items: center;
+        margin-top:10rem;
+    }
+    .wrapper .feautred-text-info p {
+        text-align: justify;
+        font-size: 0.9rem; /* Example of changing font size */
     }
 
     .row{
@@ -175,6 +193,88 @@ nav{
 
 }
 
+@media screen and (max-width:768px) {
+    .feautred-text-btn{
+        flex-direction: column;
+        
+    }
+    .featured-box{
+        justify-content: center;
+        align-items: center;
+    }
+    .btn{
+        width:10rem;
+    }
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+   
+    #about{
+        margin-top:20rem;
+    }
+    .contact-container{
+        width: 100%;
+    }
+    .section{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:768px){
+    .wrapper .featured-image{
+        justify-content: center;
+        align-items: center;
+        margin-top:5rem;
+    }
+    .contact-container{
+        width: 100%;
+    }
+}
+@media screen and (max-width:683px){
+   
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .wrapper .featured-image{
+        justify-content: center;
+        align-items: center;
+        margin-bottom:5rem;
+    }
+    #about{
+        margin-top:25rem;
+    }
+    .contact-container{
+        width: 100%;
+    }
+
+   
+
+    
+}
+@media screen and (max-width:452px){
+    .feautured-name{
+        margin-top: 10rem;
+    }
+    #about{
+        margin-top:40rem;
+    }
+    footer .footer-container{
+        flex-direction: column;
+        font-size: 1rem;
+        color: black;
+        height: 100%;
+        
+    }
+    .contact-container{
+        width: 100%;
+    }
+}
 .wrapper{
     padding-inline: 15vw;
 }
@@ -182,7 +282,6 @@ nav{
 .featured-box{
     position: relative;
     display: flex;
-    height: 100vh;
     min-height: 700px;
 }
 
@@ -195,6 +294,7 @@ nav{
     width:50%;
     min-height: 80vh;
     padding-left: 20px;
+    
 }
 
 
@@ -213,10 +313,13 @@ nav{
     font-size:15px;
     margin-bottom:30px;
     color:var(--text-color-second);
+    font-family: 'Poppins', sans-serif;
 }
 .feautred-text-btn{
       display: flex;
+      justify-content: flex-start;
       gap:20px;
+      width:100%;
 }
 
 .feautred-text-btn>.blue-btn{
@@ -227,10 +330,16 @@ nav{
     background: var(--first-color);
     color: var(--color-white);
 }
-
+.my-intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
+    gap:10px;
+}
 .social-icon{
     display: flex;
-    margin-top:5em;
+    margin-top:2em;
     gap:30px;
 }
 
@@ -258,26 +367,18 @@ nav{
 }
 
 .image{
-    border-radius: 55% 45% 55% 45%;
+    border-radius: 50%;
     width:380px;
     height: 380px;
     margin: auto 0;
     overflow: hidden;
-    animation: imgFloat1 7s ease-in-out infinite;
-    border: 2px solid black;
+    border: none;
     box-shadow: 0px 10px 10px 10px rgba(0,0,0,0.25);
 }
 .image img{
     width:380px;
     height: 380px;
     object-fit: cover;
-}
-
-@keyframes imgFloat1 {
-    50%{
-        transform: translateY(10px);
-        border-radius: 45% 55% 45% 55%;
-    }
 }
 
 .scroll-btn{
@@ -327,21 +428,22 @@ nav{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; 
     padding-inline: 20px;
     padding-block: 30px;
     box-shadow: 1px 8px 10px 10px var(--first-shadow-color);
     border-radius: 20px;
     height: 100%; 
 }
- 
+
 .about-info p{
     text-align: center;
     font-size: 15px;
     color: #777;
 }
 
-
+.contact-btn{
+    margin-top: 1rem;
+}
 
 .teg{
     display: flex;
@@ -351,32 +453,34 @@ nav{
 
 .t1,.t2,.t3{
     padding:10px;
-    background-color:rgb(110, 87, 224);
+    background-color:rgb(100 140 234);
     color: white;
     margin: 10px;
-    border-radius:10%;
+    border-radius:10px;
     font-size: 1.2rem;
-    width:6rem;
+    width:100%;
 }
 .mynewskill{
-    display: flex;
-    gap:10%;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    grid-auto-flow: row;
 }
 
 .my-skill h2{
     text-align: center;
+
 } 
 
 /* Project Section */
 
 
 .project-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: flex-start;
+   display:grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   width: 100%;
+   grid-auto-flow: row;
+   gap: 16px;
 }
 
 .cardpro {
@@ -385,7 +489,7 @@ nav{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
     overflow: hidden; 
-    width: 300px;
+    max-width: 100%;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -435,7 +539,7 @@ nav{
 }
 
 .contact-container {
-    max-width: 600px;
+    max-width:100%;
     margin: 0 auto;
     background-color: #ffffff;
     padding: 2em;
@@ -493,7 +597,7 @@ textarea {
     resize: none;
 }
 
-.btn {
+.btn1 {
     background-color: #007bff;
     color: #ffffff;
     padding: 0.75rem 1.5rem;
@@ -504,9 +608,11 @@ textarea {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 1rem;
+    width:100%;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
@@ -522,6 +628,18 @@ textarea {
 }
 
 .footer-container{
+    background: rgb(152, 158, 206);
     display: flex;
     justify-content: space-evenly;
+    align-items:flex-start;
+    height:5rem;
+    color: white;
+    font-size: 1.2rem;
+}
+
+#social a{
+    text-decoration: none;
+    font-size:1.5rem;
+    color:white;
+    padding: 1px;
 }

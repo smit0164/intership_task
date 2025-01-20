@@ -21,28 +21,28 @@
         <div class="nav-menu" id="mynav">
             <ul class="nav-menu-list">
                 <li class="nav-list">
-                    <a href="#Home" class="nav-link">Home</a>
-                    <div class="circle"></div>
+                    <a href="#Home">Home</a>
+                    
                 </li>
 
                 <li class="nav-list">
-                    <a href="#Home" class="nav-link">About</a>
-                    <div class="circle"></div>
+                    <a href="#about" >About</a>
+                   
                 </li>
 
                 <li class="nav-list">
-                    <a href="#Home" class="nav-link">Project</a>
-                    <div class="circle"></div>
+                    <a href="#projects" >Project</a>
+                    
                 </li>
 
                 <li class="nav-list">
-                    <a href="#Home" class="nav-link">Contact</a>
-                    <div class="circle"></div>
+                    <a href="#contact">Contact</a>
+                    
                 </li>
             </ul>
         </div>
         <div class="nav-button">
-            <button class="btn">Download CV <i class="uil uil-file"></i></button>
+            <a href="Smit-Patel-resume.pdf" download=""><button class="btn">Download CV <i class="uil uil-file"></i></button></a>
 
         </div>
         <div class="nav-bar">
@@ -52,20 +52,21 @@
   <!--main-->
   <main class="wrapper">
    
-        <section class="featured-box">
+        <section class="featured-box" id="Home">
               <div class="featured-text">
                    
                    <div class="feautured-name">
                     <p> I'm <span class="typedText">software developer</span></p>
                    </div>
                    <div class="feautred-text-info">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus at harum assumenda saepe quae neque quaerat, deserunt placeat ducimus, 
-                    mollitia molestias quis excepturi soluta sed autem non. Soluta, possimus quas!</p>
+                    <p style="font-size: 1rem;">Hi there! I'm a passionate software developer with expertise in Database Management Systems (DBMS), 
+                        and the MERN Stack. Over the years, I’ve built several dynamic web applications, and I’m constantly honing my skills in Data Structures and Algorithms (DSA), along with the latest Frontend technologies. I’m always eager to take on new challenges and learn more!</p>
+
                    </div>
                    <div class="feautred-text-btn">
-                    <button class="btn blue-btn">Hire Me</button>
-                     <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
-                   </div>
+                    <a href="#contact"><button class="btn blue-btn">Contact Me</button></a> 
+                     <a href="Smit-Patel-resume.pdf" download=""><button class="btn" >Download CV<i class="uil uil-file-alt"></i></button>
+                     </div></a>
                    <div class="social-icon">
                     <div class="icon"><i class="uil uil-instagram"></i></div>
                     <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
@@ -77,8 +78,7 @@
                 <div class="image">
                     <img src="21it122.jpg" alt="my image" >
                 </div>
-                   
-              </div>
+            </div>
               <div class="scroll-icon-box">
                 <a href="#about" class="scroll-btn">
                     <i class="uil uil-mouse-alt"></i>
@@ -95,39 +95,36 @@
             <div class="row">
                <div class="col1">
                    <div class="my-info">
-                         <h2>My introduction</h2>
-                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, eos hic quasi quos ab commodi sequi nulla cupiditate, consequuntur repellat debitis? 
-                           Illo iusto nisi amet saepe assumenda dolorum quidem omnis.</p>
-                           <div class="contact-btn">
-                               <button class="btn">Contact Me</button>
-                           </div>
+                       <div class="my-intro">
+                         <h2 style="text-align: center;">My introduction</h2>
+                         <p style="font-size: 1rem;font-family: 'Poppins', sans-serif;text-align: justify;">Hi! I’m Smit, a passionate software developer with expertise in Database Management Systems (DBMS) and the MERN Stack. Over the years, I’ve had the opportunity to work on multiple web development projects, creating dynamic, interactive, and user-friendly applications. I specialize in solving complex problems and transforming ideas into reality using my skills in Data Structures and Algorithms (DSA) and cutting-edge Frontend technologies.
+                         I'm constantly learning and evolving, always striving to stay up-to-date with the latest trends in the tech industry.</p>
+                        </div>
+                        <div class="contact-btn">
+                              <a href="#contact"> <button class="btn">Contact Me</button></a> 
+                        </div>
                    </div>
                </div>
                <div class="col2">
-                     <div class="my-skill">
+                    <div class="my-skill">
                         <div>
                             <h2>My Skill</h2>
                         </div>
                         <div class="mynewskill">
-                            <div class="teg">
+                            
                                 <button class="t1">HTML</button>
                                 <button class="t1">CSS</button>
                                 <button class="t1">JS</button>
-                            </div>
-                            <div class="teg">
                                 <button class="t2">Node js</button>
                                 <button class="t2">PHP</button>
-                                
-                            </div>
-                            <div class="teg">
                                 <button class="t3">C++</button>
                                 <button class="t3">C</button>
                                 <button class="t3">Java</button>
                                 
-                            </div>
                         </div>
+                    </div>
                         
-                     </div>
+                     
                </div>
             </div>
         </section>
@@ -165,7 +162,7 @@
                          </p>
              </div>
           </div>
-    </section>
+       </section>
 
     <!--Contact Me-->
     <section class="section" id="contact">
@@ -193,7 +190,7 @@
                     <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
                 </div>
                 <!-- Submit Button -->
-                <button type="submit" class="btn">Send Message</button>
+                <button type="submit" class="btn1">Send Message</button>
             </form>
         </div>
     </section>
@@ -213,16 +210,16 @@
               </div>
               
              </div>
-             <div class="footer-section">
-                 <h3>Follow Me</h3>
+             <div class="footer-section" id="social">
+                <h3>Follow Me</h3>
                  <a href="" target="_blank">
-                    <i class="fa-brands fa-github"></i>
+                    <i class="uil uil-github"></i>
                  </a>
                  <a href="" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="uil uil-linkedin-alt"></i>
                  </a>
                  <a>
-                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="uil uil-instagram"></i>
                  </a>
 
              </div>
