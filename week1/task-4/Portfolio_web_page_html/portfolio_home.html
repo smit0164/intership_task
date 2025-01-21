@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is my journey">
+    <meta name="keywords" content="Smit Patel, Frontend Developer, Portfolio">
+    <title>Smit Patel - Portfolio</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+   <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<!--Navbar-->
+<div class="conaitner">
+    <nav id="navbar">
+        <div class="nav-logo">
+            <p class="nav-text">Smit</p>
+            <span>.</span>
+        </div>
+        <div class="nav-menu" id="mynav">
+            <ul class="nav-menu-list">
+                <li class="nav-list">
+                    <a href="#Home">Home</a>
+                    
+                </li>
+
+                <li class="nav-list">
+                    <a href="#about" >About</a>
+                   
+                </li>
+
+                <li class="nav-list">
+                    <a href="#projects" >Project</a>
+                    
+                </li>
+
+                <li class="nav-list">
+                    <a href="#contact">Contact</a>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <a href="Smit-Patel-resume.pdf" download=""><button class="btn">Download CV <i class="uil uil-file"></i></button></a>
+
+        </div>
+        <div class="nav-bar">
+            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+  <!--main-->
+  <main class="wrapper">
+   
+        <section class="featured-box" id="Home">
+              <div class="featured-text">
+                   
+                   <div class="feautured-name">
+                    <p> I'm <span class="typedText">software developer</span></p>
+                   </div>
+                   <div class="feautred-text-info">
+                    <p style="font-size: 1rem;">Hi there! I'm a passionate software developer with expertise in Database Management Systems (DBMS), 
+                        and the MERN Stack. Over the years, I’ve built several dynamic web applications, and I’m constantly honing my skills in Data Structures and Algorithms (DSA), along with the latest Frontend technologies. I’m always eager to take on new challenges and learn more!</p>
+
+                   </div>
+                   <div class="feautred-text-btn">
+                    <a href="#contact"><button class="btn blue-btn">Contact Me</button></a> 
+                     <a href="Smit-Patel-resume.pdf" download=""><button class="btn" >Download CV<i class="uil uil-file-alt"></i></button>
+                     </div></a>
+                   <div class="social-icon">
+                    <div class="icon"><i class="uil uil-instagram"></i></div>
+                    <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
+                    <div class="icon"><i class="uil uil-dribbble"></i></div>
+                    <div class="icon"><i class="uil uil-github-alt"></i></div>
+                   </div>
+              </div>
+              <div class="featured-image">
+                <div class="image">
+                    <img src="image/21it122.jpg" alt="my image" >
+                </div>
+            </div>
+              <div class="scroll-icon-box">
+                <a href="#about" class="scroll-btn">
+                    <i class="uil uil-mouse-alt"></i>
+                    <p>Scroll Down</p>
+                </a>
+              </div>
+        </section>
+
+        <!--About-->
+        <section  id="about">
+            <div class="header">
+               <h1>About Me</h1>
+            </div>
+            <div class="row">
+               <div class="col1">
+                   <div class="my-info">
+                       <div class="my-intro">
+                         <h2 style="text-align: center;">My introduction</h2>
+                         <p style="font-size: 1rem;font-family: 'Poppins', sans-serif;text-align: justify;">Hi! I’m Smit, a passionate software developer with expertise in Database Management Systems (DBMS) and the MERN Stack. Over the years, I’ve had the opportunity to work on multiple web development projects, creating dynamic, interactive, and user-friendly applications. I specialize in solving complex problems and transforming ideas into reality using my skills in Data Structures and Algorithms (DSA) and cutting-edge Frontend technologies.
+                         I'm constantly learning and evolving, always striving to stay up-to-date with the latest trends in the tech industry.</p>
+                        </div>
+                        <div class="contact-btn">
+                              <a href="#contact"> <button class="btn">Contact Me</button></a> 
+                        </div>
+                   </div>
+               </div>
+               <div class="col2">
+                    <div class="my-skill">
+                        <div>
+                            <h2>My Skill</h2>
+                        </div>
+                        <div class="mynewskill">
+                            
+                                <button class="t1">HTML</button>
+                                <button class="t1">CSS</button>
+                                <button class="t1">JS</button>
+                                <button class="t2">Node js</button>
+                                <button class="t2">PHP</button>
+                                <button class="t3">C++</button>
+                                <button class="t3">C</button>
+                                <button class="t3">Java</button>
+                                
+                        </div>
+                    </div>
+                        
+                     
+               </div>
+            </div>
+        </section>
+
+        <!--Project-->
+        <section  id="projects">
+            <div class="header">
+                <h1>Projects</h1>
+            </div>
+         <div class="project-container">
+            <div class="cardpro">
+                <img src="image/medicine.webp" alt="medicines project" >
+                <h2>Unused medicine Donation</h2>
+                <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;">I created a platform where unused medicines can be donated to NGOs. These NGOs carefully inspect and distribute the medicines to poor people who otherwise cannot afford them. 
+                    The platform bridges the gap between surplus medicines and those in need, reducing waste and promoting health equity. 
+                 </p>
+            </div>
+
+            <div class="cardpro">
+                <img src="image/todo.jpg" id="cardimg" alt="medicines project" >
+                         <h2>Todo App</h2>
+                         <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;"> Manage your tasks efficiently with our easy-to-use to-do app. Create, organize, and prioritize your daily activities to stay productive. 
+                             Set reminders and deadlines to never miss an important task. Simplify your life and achieve your goals effortlessly!
+                        </p>
+             </div>
+              
+            <div class="cardpro">
+                <img src="image/weather.webp" id="cardimg" alt="medicines project" >
+                         <h2>Weather App</h2>
+                         <p style="font-family: 'Times New Roman', Times, serif;font-size: 1rem;text-align: justify; line-height: 1.6;">
+                             Stay updated with accurate and real-time weather forecasts for your location. 
+                             Get detailed insights into temperature, humidity, wind speed, and more. 
+                             Plan your day better with alerts for severe weather conditions and weekly forecasts. 
+                             Your go-to platform for all things weather!
+                         </p>
+             </div>
+          </div>
+       </section>
+
+    <!--Contact Me-->
+    <section class="section" id="contact">
+        <div class="contact-container">
+            <h1>Contact Me</h1>
+            <form >
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <!-- Subject Field -->
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
+                </div>
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn1">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+             <div class="footer-section">
+               <h3>Contact Me</h3>
+                <div class="email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>smitpatel.ast@gmail.com</span>
+              </div>
+              <div style="color: white;">
+                <i class="fa-solid fa-phone"></i>
+                <span>Phone: +91 9265601854</span>
+              </div>
+              
+             </div>
+             <div class="footer-section" id="social">
+                <h3>Follow Me</h3>
+                 <a href="" target="_blank">
+                    <i class="uil uil-github"></i>
+                 </a>
+                 <a href="" target="_blank">
+                    <i class="uil uil-linkedin-alt"></i>
+                 </a>
+                 <a>
+                    <i class="uil uil-instagram"></i>
+                 </a>
+
+             </div>
+             <div class="footer-section">
+                  <h3>@ 2025 Smit Patel</h3>
+                  <p>All rights reserved.</p>
+             </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
