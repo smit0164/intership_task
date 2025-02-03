@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+</head>
+<body>
+    <nav>
+        <h1>Expense Tracker</h1>
+    </nav>
+    <div class="container">
+        <div class="section" id="group-section">
+            <h2>Groups</h2>
+            <form id="group-form" class="form">
+                <input type="text" id="group-name" name="group-name" placeholder="Group Name" >
+                <button type="submit" class="btn">Add Group</button>
+            </form>
+            <ul id="group-list"></ul>
+        </div>
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Group</h2>
+                <form id="edit-group-form">
+                    <input type="text" id="edit-group-name" placeholder="New Group Name" required>
+                    <button type="submit" class="btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+        <div class="section" id="expense-section">
+            <h2>Expenses</h2>
+            <form id="expense-form" class="form">
+                <input type="text" id="expense-name" name="expense-name" placeholder="Expense Name" >
+                
+                <select id="expense-category" name="expense-category" >
+                    <option value="Select Category">Select Category</option>
+                </select>
+               
+                <input type="date" id="expense-date" name="expense-date" value="" >
+                <input type="number" id="expense-amount" name="expense-amount" placeholder="Amount" >
+                <button type="submit" class="btn">Add Expense</button>
+            </form>
+            <ul id="expense-list"></ul>
+            
+        </div>
+        <div id="editModalExpense" class="modal_edit">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Expense</h2>
+                <form id="edit-expense-form">
+                    <input type="text" id="edit-expense-name"  placeholder="Expense Name" >
+                
+                    <select id="edit-expense-category"  >
+                        <option value="">Select Category</option>
+                    </select>
+                   
+                    <input type="date" id="edit-expense-date"  value="" >
+                    <input type="number" id="edit-expense-amount" placeholder="Amount" >
+                    <button type="submit" class="btn">Save Expense</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="section" id="dashboard-section">
+            <h2>Dashboard</h2>
+            <button class="dashboard-item">Total expenses: &#8377;<span id="total-expenses">0</span></button>
+            <button class="dashboard-item">Highest expense: &#8377;<span id="highest-expense">0</span></button>
+            <button class="dashboard-item">This month: &#8377;<span id="this-month-expense">0</span></button>
+            <div class="dashboard-item">Group expenses:
+                <ul id="group-expenses-list-dash"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>

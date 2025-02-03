@@ -1,0 +1,413 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 16px; /* Adjusted font size */
+}
+
+nav {
+    background-color: #333; /* Dark gray */
+    color: #fff;
+    padding: 10px; /* Reduced padding */
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.error {
+    color: red; /* Set error message color to red */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-top: 5px; /* Add some margin for better spacing */
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    min-width: 400px; /* Increased min-width */
+    max-width: 800px; /* Increased max-width */
+}
+
+h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #333; /* Dark gray */
+    padding-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px; /* Increased max-width to form */
+}
+
+input, select, button {
+    margin: 15px 0; /* Increased margin */
+    padding: 15px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.btn {
+    background-color: #ff6347; /* Tomato color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn:hover {
+    background-color: #ff4500; /* Orange red */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dashboard-item {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Scrollable Expense List */
+#expense-list {
+    max-height: 500px; /* Increased height for the scrollable list */
+    overflow-y: auto;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section {
+        width: 100%;
+        max-width: 800px; /* Increased max-width */
+    }
+
+    nav {
+        font-size: 22px; /* Slightly reduced font size */
+        padding: 8px; /* Further reduced padding */
+    }
+
+    .form {
+        max-width: 100%; /* Ensure form takes full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 10px auto;
+    }
+
+    .section {
+        padding: 15px;
+        width: 100%; /* Ensure section takes full width on smaller screens */
+    }
+
+    nav {
+        font-size: 20px; /* Reduced font size */
+        padding: 6px; /* Further reduced padding */
+    }
+
+    body {
+        font-size: 15px; /* Slightly reduced font size */
+    }
+
+    .form {
+        max-width: 100%; /* Ensure form takes full width on small screens */
+    }
+}
+.error {
+    color: red; /* Set error message color to red */
+    font-size: 14px; /* Adjust font size as needed */
+    /* Add some margin for better spacing */
+    margin: 1px;
+}
+
+/* Add styles for invalid input fields */
+input.error, select.error {
+    border-color: red; /* Set border color to red when invalid */
+}
+#group-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.group_render {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.render_ginfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.render_ginfo p {
+    margin: 0;
+}
+
+.render_ginfo small {
+    color: #666;
+}
+button.group-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button.group-btn:hover {
+    opacity: 0.8;
+}
+
+button.group-btn:focus {
+    outline: none;
+}
+
+button.group-btn:active {
+    transform: scale(0.98);
+}
+
+/* Specific styles for Edit and Delete buttons */
+button.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* CSS for styling the expense list */
+/* General list styling */
+/* General list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.expense_render {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.render_exinfo {
+    flex-grow: 1;
+}
+
+.render_exinfo p {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.amount {
+    margin-right: 10px;
+}
+
+.category {
+    margin-right: 20px;
+}
+
+.expense-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.render_exinfo p small {
+    color: #888;
+}
+
+.modal_edit{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#edit-expense-form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.section {
+    width: 80%;
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-item {
+    margin: 10px 0;
+}
+
+.dashboard-item ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dashboard-item li {
+    background: #ffffff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#group-expenses-list-dash {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.group-item {
+    background: #ffffff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.group-button {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.group-button:hover {
+    background: #0056b3;
+}
+/* Styles for the expense details table */
+
+
+
+
+
+
+.expense-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.expense-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.expense-table th, .expense-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
