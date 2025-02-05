@@ -1,16 +1,21 @@
+
+function formatDate(date) {
+    return date.toLocaleString('en-US', {
+        weekday: 'long',  // Full weekday name (e.g., "Monday")
+        year: 'numeric',  // Full year (e.g., "2025")
+        month: 'long',    // Full month name (e.g., "February")
+        day: 'numeric',   // Day of the month (e.g., "1")
+        hour: '2-digit',  // Hour in 2-digit format (e.g., "10")
+        minute: '2-digit',// Minute in 2-digit format (e.g., "30")
+        hour12: true      // Use 12-hour time format with AM/PM
+    });
+}
+
 function addGroupLocal_sto(groupName){
     let Groups_obj=JSON.parse(localStorage.getItem('Groups'))||[];
     
     let currentDate=new Date();
-    let formattedDate = currentDate.toLocaleString('en-US', {
-       weekday: 'long',  // Full weekday name (e.g., "Monday")
-       year: 'numeric',  // Full year (e.g., "2025")
-       month: 'long',    // Full month name (e.g., "February")
-       day: 'numeric',   // Day of the month (e.g., "1")
-       hour: '2-digit',  // Hour in 2-digit format (e.g., "10")
-       minute: '2-digit',// Minute in 2-digit format (e.g., "30")
-       hour12: true      // Use 12-hour time format with AM/PM
-   });
+    let formattedDate = formatDate(currentDate);
     let newGroup={
         GroupName:groupName,
         CreatedAt:formattedDate,   
@@ -41,7 +46,7 @@ function renderGroupsLocal_sto(){
 }
 
 $("#group-list").on("click", ".delete-btn", function(){
-    let currentGroup = $(this).data('group');
+    let currentGroup = $(this).siblings(".render_ginfo").find("p:first").text().trim();
     deletegroupLocal_sto(currentGroup);
     renderGroupsLocal_sto();
     updateCatogery();

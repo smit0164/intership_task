@@ -21,6 +21,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
            $nameErr="Name is required";
     }else{
         $name=test_input($_POST["name"]);
+        if(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
+                $nameErr="only letters and white space allowed";
+        }
+
     }
     
     if(empty($_POST["gender"])){
@@ -33,6 +37,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $emailErr ="email is required";
     }else{
         $email=test_input($_POST["email"]);
+        if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)){
+              $emailErr="Invalid Url";
+        }
+
     }
  
     if (empty($_POST["comment"])) {
