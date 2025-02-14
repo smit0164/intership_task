@@ -9,13 +9,5 @@
 <body>
 <?php require "Partials/navbar.php"?>
 <?php require  "Partials/header.php"?>
-
-        <a href="" class="text-blue-500 hover:underline">Go Back</a>
-        <p>
-            <?=$note['body']?>
-        </p>
-    
-
 </body>
 </html>
-

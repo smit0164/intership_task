@@ -2,3 +2,9 @@
 function url($value){
     return $_SERVER["REQUEST_URI"]==$value;
   }
+
+  function authorized($condition){
+           if(!$condition){
+             abort(Response::FORBIDDEN);
+           }
+  }

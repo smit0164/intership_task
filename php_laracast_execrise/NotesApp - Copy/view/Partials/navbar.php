@@ -15,6 +15,12 @@
                     Contact Us
                 </a>
             </div>
+            <?= $_SESSION['user']?>
+            <?php if(isset($_SESSION['user'])):?>
+                 <?= $_SESSION['user']['email']?>
+            <?php else: ?>
+                 <a href="/register">Register</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

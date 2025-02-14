@@ -1,14 +1,8 @@
 <?php
-$url=parse_url($_SERVER["REQUEST_URI"])['path'];
+
+$routes = require("routes.php");
 
 
-$routes=[
-    '/'=>"controller/index.php",
-    '/about'=>"controller/about.php",
-    '/contact'=>"controller/contact.php",
-    '/notes'=>"controller/notes.php",
-    '/note'=>"controller/note.php",
-];
 function routeToController($url,$routes){
     if(array_key_exists($url,$routes)){
         require $routes[$url];
@@ -21,4 +15,5 @@ function abort($code=404){
     require "view/{$code}.php";
     die();
 }
+$url=parse_url($_SERVER["REQUEST_URI"])['path'];
 routeToController($url,$routes);

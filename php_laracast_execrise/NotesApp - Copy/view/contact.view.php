@@ -9,13 +9,5 @@
 <body>
 <?php require "Partials/navbar.php"?>
 <?php require  "Partials/header.php"?>
-<?php foreach ($notes as $note):?>
-    <li>
-        
-        <a href="note?id=<?php echo $note['id']; ?>" class="text-blue-500 hover:underline">
-            <?=$note['body']?>
-        </a>
-    </li>
-<?php endforeach;?>
 </body>
 </html>

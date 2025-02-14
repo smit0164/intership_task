@@ -1,17 +1,13 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Page Link in PHP</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<?php require"Partials/navbar.php"?>
-<h1>You are not able to see this notes...</h1>
-<a href="/" class="underline text-blue-500 hover:text-blue-700 font-medium">Go Back to Home</a>
-   
+<?php require "Partials/navbar.php"?>
+<?php require  "Partials/header.php"?>
 </body>
 </html>

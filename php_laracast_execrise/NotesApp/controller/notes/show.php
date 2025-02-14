@@ -1,16 +1,14 @@
 <?php
 $heading="Note";
+$currentUserId=5;
 $config=require('config.php');
 $db=new Database($config['database']);
 $id=$_GET['id'];
 $note=$db->query("select * from notes where id=:id",[
     'id'=>$id,
-])->fetch();
-if(!$note){
-    abort();
-}
-if($note['user_id']!==5){
-   abort(403);
-}
+])->findOrFail();
 
-require "view/note.view.php";
+authorized($note['user_id']===$currentUserId);
+
+
+require "view/notes/show.view.php";
