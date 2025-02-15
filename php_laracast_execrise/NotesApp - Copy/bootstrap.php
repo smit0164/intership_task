@@ -9,4 +9,5 @@ $container->bind('core\Database',function(){
     return new Database($config['database']);
 });
 
+
 APP::setContainer($container);
