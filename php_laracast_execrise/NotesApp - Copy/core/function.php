@@ -21,13 +21,11 @@ function url($value){
     require base_path("view/{$code}.php");
     die();
 } 
-function login($user){
-  $_SESSION['user']=$user;
-  session_regenerate_id(true);
+
+function redirect($path){
+  header("location:{$path}");
+  exit();
 }
-function logout(){
-    $_SESSION=[];
-    session_destroy();
-    $params=session_get_cookie_params();
-    setcookie('PHPSESSID','',time()-3600,$params['path'],$params['domain']);
+function old($key,$default=''){
+   return  core\Session::get('old')[$key] ?? $default;
 }

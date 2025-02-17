@@ -20,7 +20,7 @@
                 <!-- Email Field -->
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" 
+                    <input type="email" id="email" name="email" value="<?=old('email') ?>"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <?php if(isset($errors['email'])): ?>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+use core\Session;
 const BASE_PATH=__DIR__.'/../';
 
 require BASE_PATH."core/"."function.php";
@@ -22,6 +23,7 @@ $method=$_POST['_method']??$_SERVER['REQUEST_METHOD'];
 
 $router->route($url,$method);
 
+Session::unflash();
 
 
 
