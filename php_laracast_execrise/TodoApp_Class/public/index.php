@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 const BASE_PATH=__DIR__.'/../'; 
 require BASE_PATH."Core/function.php";
 spl_autoload_register(function($class){
@@ -7,8 +8,17 @@ spl_autoload_register(function($class){
     $file=getBasePath("{$result}.php");
     require $file;
 });
-
+require getBasePath("bootstrap.php");
 $config=require getBasePath("config.php");
-$router=new \core\Database($config['database']);
-print_r($router);
-die();
+$router=new \Core\Router();
+require getBasePath("routes.php");
+
+$path = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
+$method=$_SERVER['REQUEST_METHOD'];
+if($method==='POST'){
+    if(isset($_POST['_method'])){
+        $method=$_POST['_method'];
+    }
+}
+
+$router->route($path,$method);
