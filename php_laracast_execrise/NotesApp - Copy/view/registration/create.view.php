@@ -18,7 +18,9 @@
 
         <form action="/register" method="POST" class="mt-6">
             <!-- Name Field -->
-        
+            <?php if(isset($errors['db'])): ?>
+                <p class="text-red-500 text-xs mt-2 "><?= $errors['db'] ?></p>
+             <?php endif;?>
             
             <!-- Email Field -->
             <div class="mb-4">
