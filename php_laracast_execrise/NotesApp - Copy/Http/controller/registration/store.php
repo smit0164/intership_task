@@ -15,11 +15,11 @@ if(!$form->validate($email,$password)){
     ]);
     redirect('/register');
 }
-if($form->emailExists($email)){
-    $form->error('db','Email  Already Exits In DataBase...');
-    Session::flash('errors',$form->errors());
-    redirect('/register');
-}
+// if($form->emailExists($email)){
+//     $form->error('db','Email  Already Exits In DataBase...');
+//     Session::flash('errors',$form->errors());
+//     redirect('/register');
+// }
 // $errors=[];
 // if(!Validator :: email($email)){
 //     $errors['email']="Please provide a valid email address.";
@@ -48,8 +48,8 @@ if($user){
         'email'=>$email,
         'password'=>password_hash($password, PASSWORD_BCRYPT)
     ]);
-   
-    login($email);
+     $auth=new Authenticator();
+    $auth->login($email);
    
     header("location: /");
     exit();

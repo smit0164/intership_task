@@ -9,9 +9,12 @@
             $routes = [
                 '/' => 'Home',
                 '/about' => 'About',
-                '/notes' => 'Notes',
                 '/contact' => 'Contact Us'
             ];
+            if (isset($_SESSION['user'])) {
+                
+                $routes['/notes'] = 'Notes';
+            }
             foreach ($routes as $path => $name):
             ?>
                 <a href="<?= $path ?>" 

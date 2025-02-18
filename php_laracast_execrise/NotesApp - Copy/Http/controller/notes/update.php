@@ -3,10 +3,14 @@ use core\App;
 use core\Database;
 use core\Validator;
 $db=App::resolve(Database::class);
-$currentUserId=5;
+
 $note=$db->query("select * from notes  WHERE id=:id ",[
       'id'=>$_POST['id']
 ])->findOrFail();
+$user=$db->query('select * from users where email=:email',[
+    'email'=>$_SESSION['user'],
+])->find();
+$currentUserId=$user['id'];
 authorized($note['user_id']===$currentUserId);
 $errors=[];
 if(!Validator::string($_POST['body'],1,100)){

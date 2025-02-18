@@ -21,9 +21,13 @@ $errors=[];
         ]);
     }
     if(empty($errors)){
+        $user=$db->query('select * from users where email=:email',[
+            'email'=>$_SESSION['user'],
+        ])->find();
+       
         $db->query('INSERT INTO notes(body,user_id) VALUES(:body,:user_id)',[
             'body'=>$_POST['body'],
-             'user_id'=>11,
+             'user_id'=>$user['id'],
           ]);
                 
         header("location: /notes");
