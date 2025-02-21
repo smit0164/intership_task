@@ -5,6 +5,7 @@ use core\App;
 use core\Database;
 use Http\Forms\RegisterForm;
 use core\Session;
+use core\Authenticator;
 $email=$_POST['email'];
 $password=$_POST['password'];
 $form=new RegisterForm();
