@@ -1,8 +1,10 @@
 <?php
+
 session_start();
 use core\Session;
 const BASE_PATH=__DIR__.'/../';
 use core\ValidationException;
+
 require BASE_PATH."core/"."function.php";
 
 require BASE_PATH.'/vendor/autoload.php';
@@ -28,7 +30,6 @@ try{
     Session::flash('old',$exception->old);
     return redirect($router->previousUrl());
 }
-
 
 Session::unflash();
 

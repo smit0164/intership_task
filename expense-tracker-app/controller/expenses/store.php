@@ -1,51 +1,73 @@
 <?php
 session_start();
- use Core\Validator;
- use Core\Database\App;
+use Core\Validator;
+use Core\Database\App;
 
-$expenseDetails=[
-   'expenseName'=>$_POST['expenseName'],
-   'expenseAmount'=>$_POST['expenseAmount'],
-   'expenseGroup'=>$_POST['expenseGroup'],
-   'expenseDate'=>$_POST['expenseDate'],
-];
-$_SESSION['expenseName'] = $_POST['expenseName'];
-$_SESSION['expenseAmount'] = $_POST['expenseAmount'];
-$_SESSION['expenseDate'] = $_POST['expenseDate'];
-$_SESSION['expenseGroup']=$_POST['expenseGroup'];
-$_SESSION['errors']['expenseError'] = [];
+header('Content-Type: application/json');
 
-foreach($expenseDetails as $expenseName=>$value){
-    if(!Validator::string($value)){
-        $_SESSION['errors']['expenseError'][$expenseName]="{$expenseName} is required!";
-    }
-}
-if (!empty($_SESSION['errors']['expenseError'])) {
-    header("Location: /");
-    exit();
-}
-$db=App::resolve('Core\Database\Database');
-$groupName = $_POST['expenseGroup'];
-$db->query("SELECT id FROM `groups` WHERE groupName = :groupName", [
-    'groupName' => $groupName
-]);
-$groupId  = $db->find();
+// Get input values safely
+$expenseName = isset($_POST['expenseName']) ? trim($_POST['expenseName']) : '';
+$expenseAmount = isset($_POST['expenseAmount']) ? trim($_POST['expenseAmount']) : '';
+$expenseGroup = isset($_POST['expenseGroup']) ? trim($_POST['expenseGroup']) : '';
+$expenseDate = isset($_POST['expenseDate']) ? trim($_POST['expenseDate']) : '';
 
-if (!$groupId) {
-    die("Error: Group not found!");
+$errors = [];
+
+// Validate inputs
+if (!Validator::string($expenseName, 3)) {
+    $errors['expenseName'] = "Expense name must be at least 3 characters!";
 }
+
+if (!Validator::number($expenseAmount) || $expenseAmount <= 0) {
+    $errors['expenseAmount'] = "Amount must be a valid positive number!";
+}
+
+if (!Validator::string($expenseGroup)) {
+    $errors['expenseGroup'] = "Please select a valid expense group!";
+}
+
+if (!Validator::date($expenseDate)) {
+    $errors['expenseDate'] = "Please select a valid date!";
+}
+
+// If there are errors, return response
+if (!empty($errors)) {
+    http_response_code(400);
+    echo json_encode([
+        "success" => false,
+        "errors" => $errors
+    ]);
+    exit;
+}
+
+$db = App::resolve('Core\Database\Database');
+
+// Fetch group ID to ensure it's valid
+$group = $db->query("SELECT id FROM `groups` WHERE id = :groupId", [
+    'groupId' => $expenseGroup
+])->find();
+
+if (!$group) {
+    http_response_code(400);
+    echo json_encode([
+        "success" => false,
+        "errors" => ["expenseGroup" => "Selected group does not exist!"]
+    ]);
+    exit;
+}
+
+// Insert expense
 $db->query("INSERT INTO expenses (expenseName, expenseAmount, expenseDate, expenseGroup) 
             VALUES (:expenseName, :expenseAmount, :expenseDate, :expenseGroup)", [
-    'expenseName' => $_POST['expenseName'],
-    'expenseAmount' =>$_POST['expenseAmount'],
-    'expenseDate' => $_POST['expenseDate'],
-    'expenseGroup' => $groupId['id']
+    'expenseName' => $expenseName,
+    'expenseAmount' => $expenseAmount,
+    'expenseDate' => $expenseDate,
+    'expenseGroup' => $group['id']
 ]);
 
-unset( $_SESSION['errors']['expenseError']);
-unset($_SESSION['expenseName']);
-unset($_SESSION['expenseAmount']);
-unset($_SESSION['expenseDate']);
-header("Location: /");
-exit();
-
+// Return success response
+echo json_encode([
+    "success" => true,
+    "message" => "Expense added successfully!"
+]);
+exit;

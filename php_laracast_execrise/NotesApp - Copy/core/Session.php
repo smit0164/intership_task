@@ -1,6 +1,7 @@
 <?php
 namespace core;
 class Session{
+    
     public static function has($key){
         return (bool) static::get($key);
     }

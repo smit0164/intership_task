@@ -13,8 +13,10 @@ $errors=[];
     if(!Validator::string($_POST['body'],1,100)){
       
            $errors['body']="A body must contain minimum 1 or maximum 100 character";
+
     }
     if(!empty($errors)){
+        
         return view("notes/create.view.php",[
             'heading'=>'Notes',
              'errors'=>$errors

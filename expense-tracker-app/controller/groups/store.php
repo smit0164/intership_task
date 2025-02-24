@@ -1,30 +1,49 @@
 <?php
-session_start();
+
+
 use Core\Validator;
 use Core\Database\App;
 
+header('Content-Type: application/json');
+
 $groupName=$_POST['groupName'];
-if(!Validator::string($groupName)){
-      $_SESSION['errors']['groupError']="Group name is required!";
-      header("Location: /");
-      exit();
+
+if (!Validator::string($groupName)) {
+    http_response_code(400);
+    echo json_encode([
+        "success" => false,
+        "error" => "Group name is required!"
+    ]);
+    exit;
 }
 
-if(Validator::groupExists($groupName)){
-      $_SESSION['errors']['groupError']="Group name is already available in the database!";
-      header("Location: /");
-     exit();
-}
+$db = App::resolve('Core\Database\Database');
 
-$db=App::resolve('Core\Database\Database');
+try {
+    $result = $db->query("INSERT INTO `groups` (groupName) VALUES (:groupName)", [
+        'groupName' => $groupName,
+    ]);
 
-$result=$db->query("INSERT INTO `groups`(groupName) VALUES (:groupName)", [
-      'groupName' => $groupName,
-]);
-if($result){
-      if(isset($_SESSION['errors']['groupError'])){
-            unset($_SESSION['errors']['groupError']);
-      }
-      header("Location: /"); 
-      exit();
+    if (!$result) {
+        http_response_code(500);
+        echo json_encode([
+            "success" => false,
+            "error" => "Failed to create group. Please try again later."
+        ]);
+        exit;
+    }
+
+    echo json_encode([
+        "success" => true,
+        "message" => "Group created successfully!",
+    ]);
+    exit;
+} catch (\Exception $e) {
+    error_log("Error creating group: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        "success" => false,
+        "error" => "An error occurred. Please try again later."
+    ]);
+    exit;
 }

@@ -1,10 +1,12 @@
 <?php
 namespace Core\Database;
 use PDO;
- class Database{
+
+class Database {
     public $connection;
     public $statement;
-    public function __construct($config){
+
+    public function __construct($config) {
         $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
         try {
             $this->connection = new PDO($dsn, "root", "root", [
@@ -15,20 +17,28 @@ use PDO;
         }
     }
 
-    public function query($query,$paraMeter=[]){
-        $this->statement=$this->connection->prepare($query);
-        $this->statement->execute($paraMeter);
+    public function query($query, $parameters = []) {
+        $this->statement = $this->connection->prepare($query);
+        $this->statement->execute($parameters);
         return $this;
     }
-    public function find(){
+
+    public function find() {
         return $this->statement->fetch();
     }
-    public function findAll(){
+
+    public function findAll() {
         return $this->statement->fetchAll();
     }
 
     public function rowCount() {
         return $this->statement->rowCount();
     }
-    
- }
+
+    public function fetchColumn() {
+        return $this->statement->fetchColumn();
+    }
+    public function lastInsertId() {
+        return $this->connection->lastInsertId(); // ✅ Fixed!
+    }
+}

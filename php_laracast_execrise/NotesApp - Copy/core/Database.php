@@ -2,6 +2,7 @@
 namespace core;
 use PDO;
 class Database{
+    
     public $connection;
     public $statement;
     public function __construct($config){

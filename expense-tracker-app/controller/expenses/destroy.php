@@ -1,10 +1,13 @@
 <?php
 
+
 use Core\Database\App;
-$id=$_POST['id'];
+$id = $_POST['expenseId'];
+
+
 $db=App::resolve('Core\Database\Database');
-$db->query('delete from `expenses` where id=:id',[
-      'id'=>$id,
+$db->query('DELETE FROM `expenses` WHERE id = :id', [
+    'id' => $id
 ]);
-header("Location: /");
+echo json_encode(['success' => true, 'message' => 'Expense deleted successfully']);
 exit();
