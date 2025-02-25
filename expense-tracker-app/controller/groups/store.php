@@ -6,7 +6,7 @@ use Core\Database\App;
 
 header('Content-Type: application/json');
 
-$groupName=$_POST['groupName'];
+$groupName=isset($_POST['groupName'])? trim($_POST['groupName']): '';
 
 if (!Validator::string($groupName)) {
     http_response_code(400);

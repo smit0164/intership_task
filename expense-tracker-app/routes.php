@@ -10,8 +10,12 @@ $router->delete('/deleteExpense','controller/expenses/destroy.php');
 $router->patch('/editGroup','controller/groups/update.php');
 $router->patch('/editExpense','controller/expenses/update.php');
 
-$router->post('/validate-group', 'controller/validate-group.php');
-$router->post('/checkGroupName', 'controller/checkGroupName.php');
 
-$router->get('/fetchGroups','controller/fetchGroups.php');
-$router->get('/fetchData','controller/fetch_data.php');
+$router->post('/validate-group', 'controller/fetch/validate-group.php');
+$router->post('/checkGroupName', 'controller/fetch/checkGroupName.php');
+
+$router->get('/fetchGroups','controller/fetch/fetchGroups.php');
+$router->get('/fetchData','controller/fetch/fetch_data.php');
+
+$router->get('/fetchDashboard','controller/fetch/fetchDashboard.php');
+

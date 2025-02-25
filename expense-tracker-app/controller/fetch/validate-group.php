@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 use Core\Database\App;
 header('Content-Type: application/json');
 

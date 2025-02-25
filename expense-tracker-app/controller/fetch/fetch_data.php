@@ -16,7 +16,7 @@ if ($type === 'groups') {
     $groupId = $_GET['groupId'];
 
     // Fetch expenses for a specific group correctly
-    $expenses = $db->query("SELECT id, expenseName, expenseAmount, expenseDate FROM expenses WHERE expenseGroup = :groupId", [
+    $expenses = $db->query("SELECT id, expenseName, expenseAmount, expenseDate ,expenseGroup FROM expenses WHERE expenseGroup = :groupId", [
         'groupId' => $groupId
     ])->findAll();
     

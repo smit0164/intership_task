@@ -10,22 +10,21 @@
 
             <label class="block text-gray-700">Expense Name</label>
             <input type="text" name="expenseName" id="expenseName" class="w-full border p-2 rounded mt-1">
-            <div class="text-red-500 text-sm mt-1" id="errorExpenseName"></div>
+            <div class="error-text" id="errorExpenseName"></div>
 
             <label class="block text-gray-700 mt-3">Expense Amount</label>
             <input type="number" name="expenseAmount" id="expenseAmount" class="w-full border p-2 rounded mt-1" step="1" min="0">
-            <div class="text-red-500 text-sm mt-1" id="errorExpenseAmount"></div>
+            <div class="error-text" id="errorExpenseAmount"></div>
 
             <label class="block text-gray-700 mt-3">Expense Group</label>
             <select name="expenseGroup" id="expenseGroup" class="w-full border p-2 rounded mt-1">
-                <option value="">Loading...</option> <!-- Placeholder until AJAX loads data -->
+                <option value="">Loading...</option>
             </select>
-            <div class="text-red-500 text-sm mt-1" id="errorExpenseGroup"></div>
-
+            <div class="error-text" id="errorExpenseGroup"></div>
 
             <label class="block text-gray-700 mt-3">Expense Date</label>
             <input type="date" name="expenseDate" id="expenseDate" class="w-full border p-2 rounded mt-1">
-            <div class="text-red-500 text-sm mt-1" id="errorExpenseDate"></div>
+            <div class="error-text" id="errorExpenseDate"></div>
 
             <div class="flex justify-end mt-4">
                 <button type="button" onclick="closeExpenseModal()" class="mr-2 px-4 py-2 bg-gray-300 rounded">Cancel</button>
@@ -39,7 +38,14 @@
     function openExpenseModal() {
         $("#expenseModal").removeClass("hidden");
         loadExpenseGroups();
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        const today = yyyy + '-' + mm + '-' + dd;
+        $("#expenseDate").val(today);
     }
+
     function loadExpenseGroups() {
         $.ajax({
             url: "fetchGroups",
@@ -47,8 +53,8 @@
             dataType: "json",
             success: function(response) {
                 let dropdown = $("#expenseGroup");
-                dropdown.html('<option value="">Select Group</option>'); // Clear existing options
-                
+                dropdown.html('<option value="">Select Group</option>');
+
                 if (response.success) {
                     response.groups.forEach(group => {
                         dropdown.append(`<option value="${group.id}">${group.groupName}</option>`);
@@ -62,18 +68,19 @@
             }
         });
     }
+
     function closeExpenseModal() {
         let form = $("#expenseForm");
-        
-        $("#expenseModal").addClass("hidden"); // ✅ Hide modal
+
+        $("#expenseModal").addClass("hidden"); // Hide modal
 
         // Reset form fields & validation messages
-        form.trigger("reset"); 
-        form.validate().resetForm(); 
+        form.trigger("reset");
+        form.validate().resetForm();
 
-        // Remove error styles
+        // Remove error styles and clear error messages
+        form.find("input, select, textarea").removeClass("error-input error-text");
         $(".error-text").text("");
-        $("input, select").removeClass("border-red-500");
     }
 
     $(document).ready(function() {
@@ -118,19 +125,17 @@
             errorPlacement: function(error, element) {
                 let errorId = "#error" + element.attr("name").charAt(0).toUpperCase() + element.attr("name").slice(1);
                 $(errorId).text(error.text());
-                element.addClass("border-red-500");
+                element.addClass("error-input");
             },
             success: function(label, element) {
-                let errorId = "#error" + element.name.charAt(0).toUpperCase() + element.name.slice(1);
+                let errorId = "#error" + element.name.charAt(0).toUpperCase() + element.name.slice(1)
                 $(errorId).text('');
-                $(element).removeClass("border-red-500");
+                $(element).removeClass("error-input error-text");
             },
             submitHandler: function(form, event) {
                 event.preventDefault();
-                
-                let formData = $("#expenseForm").serialize(); 
-                $("#submitExpense").prop("disabled", true).text("Submitting..."); // Disable button to prevent multiple clicks
 
+                let formData = $("#expenseForm").serialize();
                 $.ajax({
                     url: "/expenses",
                     type: "POST",
@@ -138,11 +143,12 @@
                     dataType: "json",
                     success: function(response) {
                         if (response.success) {
-                            showToast("✅ Expense added successfully!");
+                            showToast("Expense added successfully!");
                             closeExpenseModal();
                             fetchGroupsAndExpenses();
+                            updateDashboard();
                         } else {
-                            alert("Error: " + response.error);
+                            showErrorToast(response.error);
                         }
                     },
                     error: function(xhr) {
@@ -153,12 +159,11 @@
                             $("#errorExpenseGroup").text(response.errors.expenseGroup || "");
                             $("#errorExpenseDate").text(response.errors.expenseDate || "");
                         } else {
-                            alert("❌ Server error. Please try again.");
+                            let errorMsg = (xhr.responseJSON && xhr.responseJSON.error) ? xhr.responseJSON.error : "Server error";
+                            showErrorToast(errorMsg);
                         }
                     },
-                    complete: function() {
-                        $("#submitExpense").prop("disabled", false).text("Submit"); // Re-enable button after request completes
-                    }
+
                 });
             }
         });

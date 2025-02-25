@@ -1,59 +1,49 @@
 <?php
-session_start();
+
 
 use Core\Validator;
 use Core\Database\App;
+header('Content-Type: application/json');
+$expenseName   = isset($_POST['expenseName']) ? trim($_POST['expenseName']) : '';
+$expenseAmount = isset($_POST['expenseAmount']) ? trim($_POST['expenseAmount']) : '';
+$expenseDate   = isset($_POST['expenseDate']) ? trim($_POST['expenseDate']) : '';
+$expenseGroup  = isset($_POST['expenseGroup']) ? trim($_POST['expenseGroup']) : '';
+$expenseId     = isset($_POST['id']) ? trim($_POST['id']) : '';
 
-$expenseDetails = [
-    'expenseName' => $_POST['expenseName'],
-    'expenseAmount' => $_POST['expenseAmount'],
-    'expenseDate' => $_POST['expenseDate'],
-    'expenseId' => $_POST['id'],
-];
+$errors = [];
 
-
-$_SESSION['expenseId'] = $_POST['id'];
-$_SESSION['expenseName'] = $_POST['expenseName'];
-$_SESSION['expenseAmount'] = $_POST['expenseAmount'];
-$_SESSION['expenseDate'] = $_POST['expenseDate'];
-$_SESSION['errors']['expenseEditError'] = [];
-
-foreach ($expenseDetails as $expenseName => $value) {
-    if (!Validator::string($value)) {
-        $_SESSION['errors']['expenseEditError'][$expenseName] = "{$expenseName} is required!";
-    }
+// Manually validate each field
+if (!Validator::string($expenseName)) {
+    $errors['expenseName'] = "Expense name is required!";
+}
+if (!Validator::number($expenseAmount)) {
+    $errors['expenseAmount'] = "Expense amount is required!";
+}
+if (!Validator::date($expenseDate)) {
+    $errors['expenseDate'] = "Expense date is required!";
+}
+if (!Validator::string($expenseGroup )) {
+    $errors['expenseId'] = "Expense ID is required!";
 }
 
-if (Validator::expenseExists($expenseDetails['expenseName'], $expenseDetails['expenseAmount'])) {
-    $_SESSION['errors']['expenseEditError']['Databse'] = "Change expenseName and expenseAmount becuse both are already available in the database!";
-}
-
-if (!empty($_SESSION['errors']['expenseEditError'])) {
-    header("Location: /");
+if (!empty($errors)) {
+    echo json_encode(['success' => false, 'errors' => $errors]);
     exit();
 }
 
 $db = App::resolve('Core\Database\Database');
 
-$affectedRows = $db->query(
-    'UPDATE `expenses` SET expenseName = :expenseName, expenseAmount = :expenseAmount, expenseDate = :expenseDate WHERE id = :expenseId',
+ $db->query(
+    'UPDATE `expenses` SET expenseName = :expenseName, expenseAmount = :expenseAmount, expenseDate = :expenseDate,expenseGroup=:expenseGroup WHERE id = :expenseId',
     [
-        'expenseName' => $expenseDetails['expenseName'],
-        'expenseAmount' => $expenseDetails['expenseAmount'],
-        'expenseDate' =>  $expenseDetails['expenseDate'],
-        'expenseId' => $expenseDetails['expenseId']
+        'expenseName'   => $expenseName,
+        'expenseAmount' => $expenseAmount,
+        'expenseDate'   => $expenseDate,
+        'expenseGroup'  =>$expenseGroup,
+        'expenseId'     => $expenseId
     ]
-)->rowCount();
+);
 
-if ($affectedRows === 0) {
-    die("No rows were updated. Either the group ID does not exist or the new value is the same as the old value.");
-}
 
-unset($_SESSION['id']);
-unset($_SESSION['expenseName']);
-unset($_SESSION['expenseAmount']);
-unset($_SESSION['expenseDate']);
-unset($_SESSION['errors']['expenseEditError']);
-
-header("location: /");
-die();
+echo json_encode(['success' => true, 'message' => "Expense updated successfully."]);
+exit();

@@ -5,7 +5,7 @@
 <div id="groupModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 class="text-xl font-bold mb-4">Add Group</h2>
-        <form method="POST" action="/groups" id="groupForm">
+        <form method="POST"  id="groupForm">
             <label class="block text-gray-700">Group Name</label>
             <input type="text" name="groupName" id="groupName" class="w-full border p-2 rounded mt-1">
             <div class="text-red-500 text-sm mt-2" id="errorMessage"></div> <!-- Error message container -->
@@ -17,103 +17,79 @@
     </div>
 </div>
 
-<style>
-    .error-input {
-        border-color: red !important;
-    }
-
-    .error-text {
-        color: red;
-        font-size: 14px;
-        margin-top: 4px;
-    }
-</style>
 
 <script>
-    function openGroupModal() {
-        $('#groupModal').removeClass("hidden");
-    }
+function openGroupModal() {
+    $('#groupModal').removeClass("hidden");
+}
 
-    function closeGroupModal() {
-        let form = $('#groupForm');
-        $('#groupModal').addClass("hidden");
+function closeGroupModal() {
+    let form = $('#groupForm');
+    form.trigger("reset");//-> initial value ma convert kari de
+    form.validate().resetForm();//--> .validate()-->create a validate instances for the form,.resetForm()-->clear all the validation error but does not reset the input value
+    $('#groupModal').addClass("hidden");
+    // Remove error styling
+    $('#groupName').removeClass("error-input");
+    $('#errorMessage').text('');
+}
 
-        // Reset form fields
-        form.trigger("reset");
-        form.validate().resetForm();
-
-        // Remove error styling
-        $('#groupName').removeClass("error-input");
-        $('#errorMessage').text('');
-    }
-
-    $(document).ready(function() {
-        $("#groupForm").validate({
-            rules: {
-                groupName: {
-                    required: true,
-                    remote: {
-                        url: "/validate-group",
-                        type: "POST",
-                        data: {
-                            groupName: () => $('#groupName').val().trim()
-                        }
+$(document).ready(function() {
+    $("#groupForm").validate({
+        rules: {
+            groupName: {
+                required: true,
+                remote: {
+                    url: "/validate-group",
+                    type: "POST",
+                    data: {
+                        groupName: () => $('#groupName').val().trim()
                     }
                 }
-            },
-            messages: {
-                groupName: {
-                    required: "Group name is required",
-                    remote: "Group name already exists!"
-                }
-            },
-            errorClass: "error-text",
-            errorPlacement: function(error, element) {
-                $('#errorMessage').text(error.text());
-                element.addClass("error-input");
-            },
-            success: function(label, element) {
-                $('#errorMessage').text('');
-                $(element).removeClass("error-input");
-            },
-            submitHandler: function(form, event) {
-                event.preventDefault();
-
-                let formData = $("#groupForm").serialize();
-
-                
-                $.ajax({
-                    url: "/groups",
-                    type: "POST",
-                    data: formData,
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.success) {
-                            showToast("✅ Group added successfully!");
-                            closeGroupModal();
-                            fetchGroupsAndExpenses();
-                        } else {
-                            $('#errorMessage').text(response.error || "An error occurred.");
-                            $('#groupName').addClass("error-input");
-                        }
-                    },
-                    error: function(xhr) {
-                        $('#errorMessage').text(xhr.responseJSON?.error || "Server error.");
-                        $('#groupName').addClass("error-input");
-                    },
-                    
-                });
             }
-        });
+        },
+        messages: {
+            groupName: {
+                required: "Group name is required",
+                remote: "Group name already exists!"
+            }
+        },
+        errorClass: "error-text",
+        errorPlacement: function(error, element) {
+            $('#errorMessage').text(error.text());
+            element.addClass("error-input");
+        },
+        success: function(label, element) {
+            $('#errorMessage').text('');
+            $(element).removeClass("error-input");
+        },
+        submitHandler: function(form, event) {
+            event.preventDefault();
+
+            let formData = $("#groupForm").serialize();
+
+            
+            $.ajax({
+                url: "/groups",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success) {
+                        showToast("Group added successfully!");
+                        closeGroupModal();
+                        fetchGroupsAndExpenses();
+                    } else {
+                        showErrorToast(response.error);
+                    }
+                },
+                error: function(xhr) {
+                    let errorMsg = (xhr.responseJSON && xhr.responseJSON.error) ? xhr.responseJSON.error : "Server error";
+                    showErrorToast(errorMsg);
+                },
+                
+            });
+        }
     });
+});
 
-    function showToast(message) {
-        let toast = $("#toastMessage");
-        toast.text(message).removeClass("hidden opacity-0").addClass("opacity-100 scale-100");
-
-        setTimeout(() => {
-            toast.removeClass("opacity-100").addClass("opacity-0");
-            setTimeout(() => toast.addClass("hidden"), 500);
-        }, 3000);
-    }
 </script>

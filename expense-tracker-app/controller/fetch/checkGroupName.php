@@ -6,7 +6,7 @@ $groupName = trim($_POST['groupName'] ?? '');
 $groupId = $_POST['groupId'] ?? 0;
 
 if (empty($groupName)) {
-    echo json_encode(["valid" => false, "message" => "Group name is required."]);
+    echo json_encode(false);
     exit;
 }
 
@@ -17,10 +17,12 @@ $existingGroup = $db->query(
     ['groupName' => $groupName, 'groupId' => $groupId]
 )->find();
 
-// ✅ Always return a valid JSON response
+
 if ($existingGroup) {
-    echo json_encode("Group name is already taken!"); // String message (Not an object)
+    // If the group name already exists, return false
+    echo json_encode( false);
 } else {
-    echo json_encode(true); // Pass validation
+    // If the group name is valid (doesn't exist), return true
+    echo json_encode(true);
 }
 exit;

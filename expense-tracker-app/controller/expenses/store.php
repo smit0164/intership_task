@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 use Core\Validator;
 use Core\Database\App;
 
@@ -10,7 +10,6 @@ $expenseName = isset($_POST['expenseName']) ? trim($_POST['expenseName']) : '';
 $expenseAmount = isset($_POST['expenseAmount']) ? trim($_POST['expenseAmount']) : '';
 $expenseGroup = isset($_POST['expenseGroup']) ? trim($_POST['expenseGroup']) : '';
 $expenseDate = isset($_POST['expenseDate']) ? trim($_POST['expenseDate']) : '';
-
 $errors = [];
 
 // Validate inputs
@@ -42,32 +41,38 @@ if (!empty($errors)) {
 
 $db = App::resolve('Core\Database\Database');
 
-// Fetch group ID to ensure it's valid
-$group = $db->query("SELECT id FROM `groups` WHERE id = :groupId", [
-    'groupId' => $expenseGroup
-])->find();
+try {
 
-if (!$group) {
-    http_response_code(400);
+
+    // Insert expense
+    $result =$db->query("INSERT INTO expenses (expenseName, expenseAmount, expenseDate, expenseGroup) 
+         VALUES (:expenseName, :expenseAmount, :expenseDate, :expenseGroup)", [
+        'expenseName' => $expenseName,
+        'expenseAmount' => $expenseAmount,
+        'expenseDate' => $expenseDate,
+        'expenseGroup' => $expenseGroup
+    ]);
+    if (!$result) {
+        http_response_code(500);
+        echo json_encode([
+            "success" => false,
+            "error" => "Failed to create expense. Please try again later."
+        ]);
+        exit;
+    }
+
+    // Return success response
+    echo json_encode([
+        "success" => true,
+        "message" => "Expense added successfully!"
+    ]);
+    exit;
+} catch (\Exception $e) {
+    error_log("Error creating Expense: " . $e->getMessage());
+    http_response_code(500);
     echo json_encode([
         "success" => false,
-        "errors" => ["expenseGroup" => "Selected group does not exist!"]
+        "error" => "An error occurred. Please try again later."
     ]);
     exit;
 }
-
-// Insert expense
-$db->query("INSERT INTO expenses (expenseName, expenseAmount, expenseDate, expenseGroup) 
-            VALUES (:expenseName, :expenseAmount, :expenseDate, :expenseGroup)", [
-    'expenseName' => $expenseName,
-    'expenseAmount' => $expenseAmount,
-    'expenseDate' => $expenseDate,
-    'expenseGroup' => $group['id']
-]);
-
-// Return success response
-echo json_encode([
-    "success" => true,
-    "message" => "Expense added successfully!"
-]);
-exit;

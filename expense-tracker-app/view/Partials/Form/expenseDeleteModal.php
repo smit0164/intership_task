@@ -32,21 +32,23 @@ function confirmDeleteExpense() {
     let groupId = $("#deleteExpenseGroupId").val(); // Get stored Group ID
     
     $.ajax({
-        url: "/deleteExpense",  // ✅ Ensure PHP route exists
-        type: "POST",        // ✅ Using POST to simulate DELETE
+        url: "/deleteExpense",  // Ensure PHP route exists
+        type: "POST",        //  Using POST to simulate DELETE
         data: $("#deleteExpenseForm").serialize(),
         dataType: "json",
         success: function(response) {
             if (response.success) {
-                closeDeleteExpenseModal(); // ✅ Close modal after deletion
-                showToast("✅ Expense deleted successfully!");
+                closeDeleteExpenseModal(); //  Close modal after deletion
+                showToast("Expense deleted successfully!");
                 fetchExpenses(groupId); // Refresh the expenses list for the group
+                updateDashboard();
             } else {
-                alert("Error: " + response.error);
+                showErrorToast(response.error);
             }
         },
-        error: function() {
-            alert("Failed to delete the expense. Try again.");
+        error: function(xhr) {
+            let errorMsg = (xhr.responseJSON && xhr.responseJSON.error) ? xhr.responseJSON.error : "Server error";
+            showErrorToast(errorMsg);
         }
     });
 }
